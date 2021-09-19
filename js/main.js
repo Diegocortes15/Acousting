@@ -1,18 +1,18 @@
-(function() {
-    "use strict";
+(function () {
+    'use strict';
 
-    document.addEventListener('DOMContentLoaded', function() {
-
-
+    document.addEventListener('DOMContentLoaded', function () {
         /** Mapa Contacto */
         if (document.querySelector('#ubicacion-acousting')) {
             var map = L.map('ubicacion-acousting').setView([4.751371, -74.029935], 16.4);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                attribution:
+                    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             }).addTo(map);
 
-            L.marker([4.751371, -74.029935]).addTo(map)
+            L.marker([4.751371, -74.029935])
+                .addTo(map)
                 .bindPopup('Universidad de San Buena Ventura')
                 .openPopup();
         }
@@ -22,28 +22,32 @@
         //Boton para enviar formulario
         document.querySelector('.enviar-formulario').addEventListener('click', enviarFormulario);
 
-
         function enviarFormulario(e) {
             e.preventDefault();
 
-            const nombre = document.querySelector("#nombre").value;
-            const apellido = document.querySelector("#apellido").value;
-            const email = document.querySelector("#email").value;
-            const telefono = document.querySelector("#telefono").value;
-            const mensaje = document.querySelector("#mensaje").value;
+            const nombre = document.querySelector('#nombre').value;
+            const apellido = document.querySelector('#apellido').value;
+            const email = document.querySelector('#email').value;
+            const telefono = document.querySelector('#telefono').value;
+            const mensaje = document.querySelector('#mensaje').value;
 
-            if (nombre === '' || apellido === '' || email === '' || telefono === '' || mensaje === '') {
+            if (
+                nombre === '' ||
+                apellido === '' ||
+                email === '' ||
+                telefono === '' ||
+                mensaje === ''
+            ) {
                 Swal.fire({
                     position: 'center',
                     icon: 'warning',
                     title: 'Todos los campos son obligatorios',
                     showConfirmButton: false,
-                    timer: 2700
-                })
+                    timer: 2700,
+                });
             } else {
-                if ((validarEmail(email))) {
+                if (validarEmail(email)) {
                     if (validarTelefono(telefono)) {
-
                         let datos = new FormData();
                         datos.append('nombre', nombre);
                         datos.append('apellido', apellido);
@@ -56,10 +60,10 @@
                         var xhr = new XMLHttpRequest();
 
                         //abrir la conexion
-                        xhr.open('POST', 'include/models/modelo-contacto.php', true);
+                        xhr.open('POST', './include/models/modelo-contacto.php', true);
 
                         //retorno de datos
-                        xhr.onload = function() {
+                        xhr.onload = function () {
                             if (this.status === 200) {
                                 let respuesta = JSON.parse(xhr.responseText);
                                 let resultado = respuesta.respuesta;
@@ -71,22 +75,20 @@
                                         icon: 'success',
                                         title: 'Su consulta se ha enviado correctamente',
                                         showConfirmButton: false,
-                                        timer: 2700
-                                    })
+                                        timer: 2700,
+                                    });
                                     document.querySelector('.formulario-contacto form').reset();
                                 } else {
                                     Swal.fire({
                                         icon: 'error',
                                         title: 'Oops...',
-                                        text: 'No logramos enviar su mensaje, por favor inténtalo más tarde'
-                                    })
+                                        text: 'No logramos enviar su mensaje, por favor inténtalo más tarde',
+                                    });
                                 }
                                 console.log(respuesta);
                             }
-                        }
+                        };
                         xhr.send(datos);
-
-
                     }
                 }
             }
@@ -100,8 +102,8 @@
                     icon: 'error',
                     title: 'Email no valido',
                     showConfirmButton: false,
-                    timer: 2700
-                })
+                    timer: 2700,
+                });
                 return false;
             } else {
                 return true;
@@ -116,19 +118,17 @@
                     icon: 'error',
                     title: 'Numero teléfonico no valido',
                     showConfirmButton: false,
-                    timer: 2700
-                })
+                    timer: 2700,
+                });
                 return false;
             } else {
                 return true;
             }
         }
-
     }); //DOM CONTENT LOADED
 })();
 
-$(function() {
-
+$(function () {
     // Agregar clase a menu
 
     $('body.pagina-index .navegacion a:contains("Inicio")').addClass('activo');
@@ -140,7 +140,7 @@ $(function() {
 
     var windowWidth = $(window).width() + 17;
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         windowWidth = $(window).width() + 17;
         var scroll = $(window).scrollTop();
 
@@ -158,10 +158,10 @@ $(function() {
         }
     });
 
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         var scroll = $(window).scrollTop();
 
-        $(window).resize(function() {
+        $(window).resize(function () {
             windowWidth = $(window).width() + 17;
         });
 
@@ -177,13 +177,12 @@ $(function() {
             $('.barra-menu').removeClass('fixed');
             $('body').css({ 'margin-top': '0px' });
         }
-
     });
 
     // Menu responsive
 
-    $('.menu-movil').on('click', function() {
+    $('.menu-movil').on('click', function () {
         $('.navegacion').slideToggle();
-        $('.menu-movil i').toggleClass("fa-bars fa-times");
+        $('.menu-movil i').toggleClass('fa-bars fa-times');
     });
 });
