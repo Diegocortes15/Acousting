@@ -38,7 +38,7 @@ if($accion === 'contacto'){
         $mail->SMTPAuth = true;
         $mail->isHTML();
         $mail->Username = 'cortesroadiegoalejandro@gmail.com';
-        $mail->Password = 'Cortes_1193201125-Roa;1086';
+        $mail->Password = '123456789';
         $mail->SMTPSecure = "ssl";
         $mail->isHTML(true);
         $mail->SetFrom('cortesroadiegoalejandro@gmail.com');
