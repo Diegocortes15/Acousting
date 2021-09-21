@@ -36,7 +36,7 @@
         <?php
         $host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
-        if($host == 'localhost/Acousting/contacto.php') { ?>
+        if($host == 'acousting.herokuapp.com/contacto.php') { ?>
 
         <div id="ubicacion-acousting" class="ubicacion-acousting"></div>
 
