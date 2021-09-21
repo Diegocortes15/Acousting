@@ -33,6 +33,18 @@
 
             </section>
         </div>
+        <?php
+        $host = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+
+        if($host == 'localhost/Acousting/contacto.php') { ?>
+
+        <div id="ubicacion-acousting" class="ubicacion-acousting"></div>
+
+            <!-- <section id="ubicacion-acousting" class="ubicacion-acousting leaflet-container leaflet-fade-anim leaflet-grab leaflet-touch-drag">
+                <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);"></div>
+            </section> -->
+
+        <?php } ?>
         <!-- contacto -->
         <p class="copy">Todos los derechos reservados 2021 &copy</p>
     </footer>

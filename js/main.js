@@ -4,16 +4,16 @@
     document.addEventListener('DOMContentLoaded', function () {
         /** Mapa Contacto */
         if (document.querySelector('#ubicacion-acousting')) {
-            var map = L.map('ubicacion-acousting').setView([4.751371, -74.029935], 16.4);
+            var map = L.map('ubicacion-acousting').setView([4.6831, -74.0423], 16.4);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution:
                     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             }).addTo(map);
 
-            L.marker([4.751371, -74.029935])
+            L.marker([4.6831, -74.0423])
                 .addTo(map)
-                .bindPopup('Universidad de San Buena Ventura')
+                .bindPopup('Universidad Militar Nueva Granada')
                 .openPopup();
         }
 
